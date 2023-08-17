@@ -4,7 +4,53 @@
 
 /* 一键改变背景色（css变量方式） */
 :root {
-  --theme_bgColor: #fff;
+  --colorBgBase:#fff
+  --colorTextBase:#000;
+  --colorBorder:#d9d9d9;
+
+  --colorPrimary:#1677ff;
+  --colorPrimaryActive:#0958d9;
+  --colorPrimaryBg:#e6f4ff;
+  --colorPrimaryBgHover:#bae0ff;
+  --colorPrimaryBorder:#91caff;
+  --colorPrimaryBorderHover:#69b1ff;
+  --colorPrimaryHover:#4096ff;
+  --colorPrimaryText:#1677ff;
+  --colorPrimaryTextActive:#0958d9;
+  --colorPrimaryTextHover:#4096ff;
+
+  --colorSuccess:#52c41a;
+  --colorSuccessActive:#389e0d;
+  --colorSuccessBg:#f6ffed;
+  --colorSuccessBgHover:#d9f7be;
+  --colorSuccessBorder:#b7eb8f;
+  --colorSuccessBorderHover:#95de64;
+  --colorSuccessHover:#95de64;
+  --colorSuccessText:#52c41a;
+  --colorSuccessTextActive:#389e0d;
+  --colorSuccessTextHover:#73d13d;
+
+  --colorWarning:#faad14;
+  --colorWarningActive:#d48806;
+  --colorWarningBg:#fffbe6;
+  --colorWarningBgHover:#fff1b8;
+  --colorWarningBorder:#ffe58f;
+  --colorWarningBorderHover:#ffd666;
+  --colorWarningHover:#ffd666;
+  --colorWarningText:#faad14;
+  --colorWarningTextActive:#d48806;
+  --colorWarningTextHover:#ffc53d;
+
+  --colorError:#ff4d4f;
+  --colorErrorActive:#d9363e;
+  --colorErrorBg:#fff2f0;
+  --colorErrorBgHover:#fff1f0;
+  --colorErrorBorder:#ffccc7;
+  --colorErrorBorderHover:#ffa39e;
+  --colorErrorHover:#ff7875;
+  --colorErrorText:#ff4d4f;
+  --colorErrorTextActive:#d9363e;
+  --colorErrorTextHover:#ff7875;
 }
 
 html,

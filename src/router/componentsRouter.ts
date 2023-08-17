@@ -9,6 +9,14 @@ const componentsRouter: RouteRecordRaw[] = [
       title: "树组件",
     },
   },
+  {
+    path: "/myButton",
+    name: "myButton",
+    component: () => import("@/pages/myButton/index.vue"),
+    meta: {
+      title: "按钮组件",
+    },
+  },
 ];
 
 export default componentsRouter;
