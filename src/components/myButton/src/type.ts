@@ -1,10 +1,13 @@
-export type buttonTypes = "" | "primary" | "success" | "warning" | "error" | "text";
-export type sizeTypes = "" | "large" | "small";
+export type buttonTypes = "info" | "primary" | "success" | "warning" | "error" | "danger";
+export type sizeTypes = "default" | "large" | "small";
 export type myButtonProps = {
   type?: buttonTypes;
   icon?: string;
   loading?: boolean;
   size?: sizeTypes;
+  link?: boolean;
+  text?: boolean;
+  raduis?: Array<[]>;
 };
 
 export const sizeEnum = {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <myButton type="primary">123</myButton>
+    <myButton type="warning">123</myButton>
   </div>
 </template>
 

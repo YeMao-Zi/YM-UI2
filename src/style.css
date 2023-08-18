@@ -7,6 +7,8 @@
   --colorBgBase:#fff
   --colorTextBase:#000;
   --colorBorder:#d9d9d9;
+  --colorBgMask:rgba(0, 0, 0, 0.45);
+  --colorBgGray:#f5f7fa;
 
   --colorPrimary:#1677ff;
   --colorPrimaryActive:#0958d9;
@@ -51,6 +53,16 @@
   --colorErrorText:#ff4d4f;
   --colorErrorTextActive:#d9363e;
   --colorErrorTextHover:#ff7875;
+
+  --colorDanger:#f56c6c;
+  --colorDangerActive:#f89898;
+  --colorDangerBg:#fab6b6;
+  --colorDangerBgHover:#fcd3d3;
+  --colorDangerBorder:#fde2e2;
+  --colorDangerBorderHover:#ffd666;
+  --colorDangerHover:#f89898;
+  --colorDangerText:#f56c6c;
+  --colorDangerTextHover:#fab6b6;
 }
 
 html,

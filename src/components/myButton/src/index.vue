@@ -1,12 +1,12 @@
 <template>
-  <button :class="['myButton', type]">
-    <div v-if="loading" class="loading">
+  <button :class="['myButton', type, link ? 'link' : '', text ? 'text' : '']">
+    <div v-if="loading" class="loading" style="">
       <Icon icon="eos-icons:bubble-loading" />
     </div>
-    <div class="icon" v-if="icon">
+    <div class="icon" v-if="icon && !loading">
       <Icon :icon="icon" />
     </div>
-    <span><slot></slot></span>
+    <span class="content"><slot></slot></span>
   </button>
 </template>
 
@@ -14,21 +14,24 @@
 import { Icon } from "@iconify/vue";
 import { myButtonProps, sizeEnum } from "./type";
 const props = withDefaults(defineProps<myButtonProps>(), {
-  type: "",
+  type: "info",
   icon: "",
   loading: false,
-  size: "",
+  size: "default",
+  link: false,
+  text: false,
 });
 </script>
 
 <style lang="less" scoped>
 .myButton {
+  // width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   box-sizing: border-box;
-  padding: 12px 16px;
+  padding: 8px 12px;
   background-color: rgba(0, 0, 0, 0.1);
   color: #222;
   border: none;
@@ -36,6 +39,66 @@ const props = withDefaults(defineProps<myButtonProps>(), {
   user-select: none;
   transition: all 0.3s;
   font-size: 14px;
+  gap: 6px;
+
+  &.link {
+    padding: 0;
+
+    &.warning {
+      color: var(--colorWarning);
+      background-color: transparent;
+      &:hover {
+        color: var(--colorWarningTextHover);
+      }
+    }
+    &.primary {
+      color: var(--colorPrimary);
+      background-color: transparent;
+      &:hover {
+        color: var(--colorPrimaryTextHover);
+      }
+    }
+    &.success {
+      color: var(--colorSuccessText);
+      background-color: transparent;
+      &:hover {
+        color: var(--colorSuccessTextHover);
+      }
+    }
+    &.error {
+      color: var(--colorError);
+      background-color: transparent;
+      &:hover {
+        color: var(--colorErrorTextHover);
+      }
+    }
+    &.danger {
+      color: var(--colorDangerText);
+      background-color: transparent;
+      &:hover {
+        color: var(--colorDangerTextHover);
+      }
+    }
+  }
+
+  &.text {
+    background-color: unset;
+    &.warning {
+      color: var(--colorWarning);
+    }
+    &.primary {
+      color: var(--colorPrimary);
+    }
+    &.success {
+      color: var(--colorSuccess);
+    }
+    &.error {
+      color: var(--colorError);
+    }
+    &.danger {
+      color: var(--colorDanger);
+    }
+  }
 }
 
 .myButton:hover {
@@ -50,86 +113,79 @@ const props = withDefaults(defineProps<myButtonProps>(), {
   color: #fff;
 }
 .primary:hover {
-  background-color: #0854ac;
+  background-color: var(--colorPrimaryHover);
 }
 .primary:active {
-  background-color: #033d7f;
+  background-color: var(--colorPrimaryActive);
 }
 
 // success样式
 .success {
-  background-color: #19be6b;
+  background-color: var(--colorSuccess);
   color: #fff;
 }
 .success:hover {
-  background-color: #0ea459;
+  background-color: var(--colorSuccessHover);
 }
 .success:active {
-  background-color: #008140;
+  background-color: var(--colorSuccessActive);
 }
 
 // warning样式
 .warning {
-  background-color: #ffc163;
+  background-color: var(--colorWarning);
   color: #fff;
 }
 .warning:hover {
-  background-color: #db952d;
+  background-color: var(--colorWarningHover);
 }
 .warning:active {
-  background-color: #b97b1d;
+  background-color: var(--colorWarningActive);
 }
 
 // error样式
 .error {
-  background-color: #ff5252;
+  background-color: var(--colorError);
   color: #fff;
 }
 .error:hover {
-  background-color: #fd3030;
+  background-color: var(--colorErrorHover);
 }
 .error:active {
-  background-color: #d50000;
+  background-color: var(--colorErrorActive);
+}
+
+// error样式
+.danger {
+  background-color: var(--colorDanger);
+  color: #fff;
+}
+.danger:hover {
+  background-color: var(--colorDangerHover);
+}
+.danger:active {
+  background-color: var(--colorDangerActive);
 }
 
 // text样式
-.text {
-  background-color: unset;
-  color: #409eff;
-  padding: 2px 4px;
-}
+
 .text:hover {
-  background-color: unset;
+  background-color: var(--colorBgGray);
   opacity: 0.9;
 }
 .text:active {
-  background-color: unset;
+  background-color: var(--colorBgGray);
   opacity: 1;
-  color: #1a7ada;
-}
-
-// dangerText样式
-.dangerText {
-  background-color: unset;
-  color: #ff5252;
-  padding: 2px 4px;
-}
-.dangerText:hover {
-  background-color: unset;
-  opacity: 0.9;
-}
-.dangerText:active {
-  background-color: unset;
-  opacity: 1;
-  color: #d50000;
+  color: var(--colorPrimaryTextActive);
 }
 
 // 加载按钮样式
-.loadingBtn {
+.loading {
   opacity: 0.6;
   pointer-events: none; // 值为none就没有hover和active效果了
 }
-
+.content {
+}
 // disabled样式（注意样式的顺序）
 .disabledBtn {
   background-color: rgba(0, 0, 0, 0.12);
@@ -144,5 +200,20 @@ const props = withDefaults(defineProps<myButtonProps>(), {
   color: #bbb;
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.12);
+}
+
+// 附上按钮组样式
+.myButtonGroup > .myButton {
+  border-radius: unset !important;
+  border-right: 1px solid #fff;
+}
+.myButtonGroup > .myButton:first-of-type {
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+}
+.myButtonGroup > .myButton:last-of-type {
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+  border-right: none;
 }
 </style>
